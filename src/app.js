@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import { connectDB } from "./config/db.js";
+import routes from "./routes/index.js";
+import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
 
 const app = express();
 
@@ -36,17 +38,9 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// 404 handler
-app.use((req, res) => {
-  res.status(404).json({ message: "Route not found" });
-});
+app.use("/api", routes);
 
-// error handler (must have 4 parameters)
-app.use((err, req, res, next) => {
-  console.error(err);
-  res
-    .status(err.status || 500)
-    .json({ message: err.message || "Server error" });
-});
+app.use(notFound);
+app.use(errorHandler);
 
 export default app;
