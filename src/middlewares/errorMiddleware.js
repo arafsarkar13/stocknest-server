@@ -20,7 +20,10 @@ export const errorHandler = (err, req, res, next) => {
     status = 400;
     message = "Invalid ID";
   }
-
+  if (err.code === "LIMIT_FILE_SIZE") {
+    status = 400;
+    message = "Image must be 2MB or smaller";
+  }
   if (status === 500) console.error(err);
   res.status(status).json({ message });
 };
