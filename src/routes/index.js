@@ -5,7 +5,8 @@ import categoryRoutes from "./categoryRoutes.js";
 import supplierRoutes from "./supplierRoutes.js";
 import productRoutes from "./productRoutes.js";
 import uploadRoutes from "./uploadRoutes.js";
-
+import purchaseOrderRoutes from "./purchaseOrderRoutes.js";
+import stockRoutes from "./stockRoutes.js";
 const router = Router();
 
 router.use("/auth", authRoutes);
@@ -14,5 +15,6 @@ router.use("/categories", categoryRoutes);
 router.use("/suppliers", supplierRoutes);
 router.use("/products", productRoutes);
 router.use("/uploads", uploadRoutes);
-
+router.use("/purchase-orders", purchaseOrderRoutes);
+router.use("/stock-movements", stockRoutes);
 export default router;

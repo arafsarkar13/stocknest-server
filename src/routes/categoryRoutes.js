@@ -17,3 +17,4 @@ router.put("/:id", canEdit, updateCategory);
 router.delete("/:id", canEdit, deleteCategory);
 
 export default router;
+
