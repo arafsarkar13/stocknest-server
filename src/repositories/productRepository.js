@@ -19,6 +19,26 @@ export const productRepository = {
   },
 
   findById: (id) => Product.findById(id).populate(populateFields),
+
+  findManyByIds: (ids) =>
+    Product.find({ _id: { $in: ids } }).select("name sku costPrice"),
+
+  // changes = [{ productId, quantity, costPrice? }], quantity can be negative later (sales)
+  adjustStockMany: (changes) =>
+    Product.bulkWrite(
+      changes.map((change) => ({
+        updateOne: {
+          filter: { _id: change.productId },
+          update: {
+            $inc: { stock: change.quantity },
+            ...(change.costPrice !== undefined && {
+              $set: { costPrice: change.costPrice },
+            }),
+          },
+        },
+      })),
+    ),
+
   findByExternalId: (externalId) => Product.findOne({ externalId }),
   create: (data) => Product.create(data),
   update: (id, data) =>
