@@ -7,6 +7,7 @@ import routes from "./routes/index.js";
 import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
 
 const app = express();
+app.set("trust proxy", 1);
 
 const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:3000")
   .split(",")
