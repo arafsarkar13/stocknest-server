@@ -17,6 +17,9 @@ const userSchema = new mongoose.Schema(
       default: "staff",
     },
     isActive: { type: Boolean, default: true },
+    phone: { type: String, trim: true, default: "" },
+    address: { type: String, trim: true, default: "" },
+    passwordChangedAt: { type: Date },
   },
   { timestamps: true },
 );
