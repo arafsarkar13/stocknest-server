@@ -8,11 +8,13 @@ import uploadRoutes from "./uploadRoutes.js";
 import purchaseOrderRoutes from "./purchaseOrderRoutes.js";
 import stockRoutes from "./stockRoutes.js";
 import saleRoutes from "./saleRoutes.js";
+import reportRoutes from "./reportRoutes.js";
 const router = Router();
 
 router.use("/auth", authRoutes);
 router.use("/users", userRoutes);
 router.use("/categories", categoryRoutes);
+router.use("/reports", reportRoutes);
 router.use("/suppliers", supplierRoutes);
 router.use("/products", productRoutes);
 router.use("/uploads", uploadRoutes);
