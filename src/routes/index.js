@@ -7,6 +7,7 @@ import productRoutes from "./productRoutes.js";
 import uploadRoutes from "./uploadRoutes.js";
 import purchaseOrderRoutes from "./purchaseOrderRoutes.js";
 import stockRoutes from "./stockRoutes.js";
+import saleRoutes from "./saleRoutes.js";
 const router = Router();
 
 router.use("/auth", authRoutes);
@@ -17,4 +18,5 @@ router.use("/products", productRoutes);
 router.use("/uploads", uploadRoutes);
 router.use("/purchase-orders", purchaseOrderRoutes);
 router.use("/stock-movements", stockRoutes);
+router.use("/sales", saleRoutes);
 export default router;
