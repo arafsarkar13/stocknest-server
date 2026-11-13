@@ -9,6 +9,8 @@ const cleanUser = (user) => ({
   name: user.name,
   email: user.email,
   role: user.role,
+  phone: user.phone || "",
+  address: user.address || "",
 });
 
 export const authService = {
